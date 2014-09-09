@@ -9,7 +9,7 @@ import org.bson.types.ObjectId;
  *
  * @author iEnzo
  */
-@Entity(value="usuario")
+@Entity(value="Usuario")
 public class Usuario{
     @Id 
     private String _id;

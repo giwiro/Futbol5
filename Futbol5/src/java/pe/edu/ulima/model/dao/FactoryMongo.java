@@ -4,13 +4,15 @@ package pe.edu.ulima.model.dao;
 import com.google.code.morphia.Morphia;
 import com.mongodb.Mongo;
 import java.io.UnsupportedEncodingException;
-import javax.xml.registry.infomodel.User;
 import pe.edu.ulima.model.beans.Usuario;
 import pe.edu.ulima.util.MongoUtil;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import pe.edu.ulima.model.beans.Partido;
 
 /**
  *
@@ -21,6 +23,7 @@ public class FactoryMongo implements FactoryDAO {
     private Mongo mongo;
     private Morphia morphia;
     private UsuarioMongoDAO userDao;
+    private PartidoMongoDAO partidoMongoDao;
     private final String dbname = "futbol5";
     
     public void initiate(){
@@ -28,6 +31,7 @@ public class FactoryMongo implements FactoryDAO {
         morphia = new Morphia();
         morphia.map(Usuario.class);
         userDao = new UsuarioMongoDAO(mongo, morphia, dbname);
+        partidoMongoDao = new PartidoMongoDAO(mongo, morphia, dbname);
     }
     
     @Override
@@ -63,6 +67,25 @@ public class FactoryMongo implements FactoryDAO {
         
         Usuario inserted = userDao.insertUsuario(userInsert);
         return inserted;
+    }
+
+    @Override
+    public List<Partido> getPartidos() {
+        initiate();
+        return partidoMongoDao.getPartidos();
+    }
+
+    @Override
+    public Partido insertPartido(String nombre, Date hora) {
+        initiate();
+        Partido partidoInsert = new Partido();
+        partidoInsert.setName(nombre);
+        partidoInsert.setHora(hora);
+        partidoInsert.setEstado("espera");
+    
+        Partido partido = partidoMongoDao.insertPartido(partidoInsert);
+        
+        return partido;
     }
     
 }

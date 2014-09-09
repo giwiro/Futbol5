@@ -6,6 +6,9 @@
 
 package pe.edu.ulima.model.dao;
 
+import java.util.Date;
+import java.util.List;
+import pe.edu.ulima.model.beans.Partido;
 import pe.edu.ulima.model.beans.Usuario;
 
 /**
@@ -15,4 +18,6 @@ import pe.edu.ulima.model.beans.Usuario;
 public interface FactoryDAO {
     public Usuario getUser(String name); 
     public Usuario registerUser(String dni, String nombre, String apellido, String nick, String password); 
+    public List<Partido> getPartidos();
+    public Partido insertPartido(String nombre, Date hora);
 } 
