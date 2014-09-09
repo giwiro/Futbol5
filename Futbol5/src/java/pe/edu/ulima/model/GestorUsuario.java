@@ -35,10 +35,10 @@ public class GestorUsuario {
         Usuario user = mFactory.getUser(nickname);
         if(user != null){
             if(user.getPassword().equals(password)){
-            return user;
-        }else{
-            return null;
-        } 
+                return user;
+            }else{
+                return null;
+            } 
         }else{
             return null;
         } 

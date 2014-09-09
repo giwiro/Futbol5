@@ -7,6 +7,7 @@
 package pe.edu.ulima.futbolapp.servlets;
 
 import com.google.code.morphia.emul.org.bson.types.ObjectId;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -32,24 +33,19 @@ public class LoginUser extends HttpServlet {
         Usuario user = GestorUsuario.getInstance().loguin(
                 request.getParameter("nickname"), request.getParameter("password"));
         
+                final Gson gson = new Gson();
+                String formatJson = gson.toJson(user);
+                
         
-            response.setContentType("text/html;charset=UTF-8");
+            response.setContentType("application/json");
             try (PrintWriter out = response.getWriter()) {
                 /* TODO output your page here. You may use following sample code. */
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>Servlet NewServlet</title>");            
-                out.println("</head>");
-                out.println("<body>");
+                
                 if(user != null){
-                out.println("<h1>Bienvenido " + user.getName() + "</h1>");
+                out.println(formatJson);
                 }else{
-                out.println("<h1>Esta mal esta mierda </h1>");
+                out.println("<h1>Tu usuario o password sin incorrectos </h1>");
                 }
-                out.println("</body>");
-                out.println("</html>");
-            
         }
      
     }

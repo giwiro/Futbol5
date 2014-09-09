@@ -5,6 +5,7 @@
         <group>
             <file>file:/Users/iEnzo/NetBeansProjects/Futbol5/src/java/pe/edu/ulima/model/dao/FactoryDAO.java</file>
             <file>file:/Users/iEnzo/NetBeansProjects/Futbol5/src/java/pe/edu/ulima/model/GestorUsuario.java</file>
+            <file>file:/Users/iEnzo/NetBeansProjects/Futbol5/src/java/pe/edu/ulima/model/beans/Usuario.java</file>
             <file>file:/Users/iEnzo/NetBeansProjects/Futbol5/src/java/pe/edu/ulima/model/dao/UsuarioMongoDAO.java</file>
             <file>file:/Users/iEnzo/NetBeansProjects/Futbol5/src/java/pe/edu/ulima/futbolapp/servlets/LoginUser.java</file>
             <file>file:/Users/iEnzo/NetBeansProjects/Futbol5/src/java/pe/edu/ulima/model/dao/FactoryMongo.java</file>

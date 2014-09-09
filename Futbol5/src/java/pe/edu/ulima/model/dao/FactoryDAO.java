@@ -14,4 +14,4 @@ import pe.edu.ulima.model.beans.Usuario;
  */
 public interface FactoryDAO {
     public Usuario getUser(String name); 
-}
+} 

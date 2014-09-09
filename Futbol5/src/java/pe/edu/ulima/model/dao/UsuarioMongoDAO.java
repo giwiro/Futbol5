@@ -40,7 +40,6 @@ public class UsuarioMongoDAO extends BasicDAO<Usuario, ObjectId>{
         return ds.find(entityClazz).filter("name", regExp).iterator();
     }
     
-
     public Usuario getUsuario(String nick) {
         return ds.find(Usuario.class).field("nickname").equal(nick).get();
     }
