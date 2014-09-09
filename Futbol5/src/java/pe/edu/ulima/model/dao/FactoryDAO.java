@@ -14,4 +14,5 @@ import pe.edu.ulima.model.beans.Usuario;
  */
 public interface FactoryDAO {
     public Usuario getUser(String name); 
+    public Usuario registerUser(String dni, String nombre, String apellido, String nick, String password); 
 } 

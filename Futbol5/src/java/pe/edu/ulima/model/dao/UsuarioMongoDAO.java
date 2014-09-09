@@ -44,4 +44,9 @@ public class UsuarioMongoDAO extends BasicDAO<Usuario, ObjectId>{
         return ds.find(Usuario.class).field("nickname").equal(nick).get();
     }
     
+    public Usuario insertUsuario(Usuario userInsert) {
+        ds.save(userInsert);
+        return userInsert;
+    }
+    
 }

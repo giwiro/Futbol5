@@ -9,20 +9,20 @@ import org.bson.types.ObjectId;
  *
  * @author iEnzo
  */
-@Entity
+@Entity(value="usuario")
 public class Usuario{
     @Id 
-    private ObjectId _id;
+    private String _id;
     private String name;
     private String lastname;
     private String nickname;
     private String password;
 
-    public ObjectId getId() {
+    public String getId() {
         return _id;
     }
 
-    public void setId(ObjectId _id) {
+    public void setId(String _id) {
         this._id = _id;
     }
 
