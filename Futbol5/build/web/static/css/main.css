@@ -4,7 +4,61 @@
    Author's custom styles
    ========================================================================== */
 
+.row{
+	margin-right: 0;
+	margin-left: 0;
+}
+.navbar{
+	border-radius: 0 !important;
+	margin-bottom: 0 !important;
+}
 
+.navbar-nav>li.pad{
+	padding-left: 25px;
+}
+.navbar-nav>li.pad>a{
+	display: inline-block;
+	text-decoration: underline;
+}
+
+.navbar-nav>li{
+	padding: 0 10px;
+	color: white;
+}
+
+.fc{
+	width: 90% !important;
+	margin: auto auto 70px auto;
+}
+.fc-toolbar{
+	height: 150px;
+	margin-top: -150px;
+}
+h2{
+	color: white
+}
+.fc-prev-button.ui-button.ui-state-default{
+	position: absolute !important;
+	left: 30px;
+	top: 140px;
+	background: none;
+	border: none;
+	color: white;
+	box-shadow: none;
+	outline: none;
+	font-size: 2.5em;
+}
+.fc-next-button.ui-button.ui-state-default{
+	position: absolute !important;
+	right: 30px;
+	top: 140px;
+	background: none;
+	border: none;
+	color: white;
+	box-shadow: none;
+	outline: none;
+	font-size: 2.5em;
+}
 
 .full {
 	background: url(../img/blur/soccer-bg.jpg) no-repeat center center fixed; 
@@ -25,7 +79,6 @@
 }
 
 .login img{
-	opacity: .5;
 	cursor: pointer;
 }
 .login img:hover{
@@ -98,10 +151,77 @@
 	font-weight: bold !important;
 }
 
+.logo{
+	opacity: 0.5;
+}
 
+.logo.blanco{
+	height: 45px;
+	margin-top: -10px;
+}
+.logo.blanco:hover{
+	opacity: 0.7;
+}
+#noticias{
+	text-align: center;
+	margin-top: 50px;
+}
+#noticias article{
+	text-align: left;
+	margin-top: 15px;
+}
+.noticia-wrap{
+	padding-left: 33px;
+	padding-right: 33px;
+	margin-bottom: 75px;
+}
+.noticia-mes{
+	background: #18bc9c;
+	height: 250px;
+}
+.noticia-calendar{
+	background: rgba(99,215,192,0.1);
+	padding-bottom: 10px;
+}
 
+.img-noticia{
+	height: 150px;
+	width: 150px;
+}
 
+.footer{
+	width: 100%;
+	min-height: 70px;
+	background-color: #EBEBEB;
+}
 
+.footer .SNicon{
+	width: 55px;
+	height: 55px;
+	margin-top: -25px;
+	cursor: pointer
+}
+
+.footer .icon-wrap{
+	padding-top: 3px;
+}
+
+.footer .icon-wrap + .icon-wrap{
+	margin-top: 10px;
+}
+
+.footer .icon{
+	width: 28px;
+	height: 28px;
+	border-radius: 30px;
+	color: white;
+	text-align: center;
+	background-color: #C2C2C2;
+	padding-top: 4px;
+	display: inline-block;
+	vertical-align: top;
+	margin-top: -3px;
+}
 
 
 
