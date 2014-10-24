@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="static/css/flatly-theme.min.css">
+        <link rel="stylesheet" href="static/css/main.css">
+        <link rel="stylesheet" href="static/css/fullcalendar.min.css">
+        <link rel="stylesheet" href="static/css/fullcalendar.print.css" media="print">
+
+
+        <script src="static/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="navbar navbar-default">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img class="logo blanco" src="static/img/logoBlanco.png" alt=""></a>
+          </div>
+          <div class="navbar-collapse collapse navbar-responsive-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">Crear Sala</a></li>
+              <li class="pad">
+                <label for="Hola">Hola </label>
+                <a href="#">giwiro</a>
+                <span id="tooltip-karma" class="badge pull-right hidden-xs" style="margin-top:23px; cursor: default" data-toggle="tooltip" data-placement="bottom" title="Puntos de Karma">42</span>
+                <span class="badge pull-right visible-xs" style="margin-top:9px">42</span>
+              </li>
+              <li><a href="#">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="noticia-mes"></div>
+
+        <div class="noticia-calendar">
+          <div id="calendar"></div>
+        </div>
+
+
+        <div id="noticias" class="row">
+          <div class="noticia-wrap col-md-4">
+            <img src="http://thedailyshift.ie/wp-content/uploads/2014/01/1280423555-stadium-05.jpg" alt="" class="img-circle img-thumbnail img-noticia">
+            <article>
+              <h3>Impactante noticia</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur similique, beatae. Consequatur sapiente optio excepturi accusamus nulla nemo, cum voluptatibus, explicabo debitis maiores natus iure harum repellat tempora? Voluptatibus, hic.</p>
+              <button class="btn btn-info pull-right">Leer más ...</button>
+            </article>
+          </div>
+          <div class="noticia-wrap col-md-4">
+            <img src="http://2.bp.blogspot.com/_1kNf5YsCl7I/TDX-MmTsgWI/AAAAAAAACgk/l5tOjjVdTF0/s1600/Howard+Webb+5.jpg" alt="" class="img-circle img-thumbnail img-noticia">
+            <article>
+              <h3>Impactante noticia2</h3>
+              <p>Nam dolore, nihil rem earum, laborum ea dolores autem iste reiciendis, provident incidunt mollitia. Iste quis rem id cumque perferendis, debitis voluptates quos ab numquam. Minima quis non consectetur ipsa.</p>
+              <button class="btn btn-info pull-right">Leer más ...</button>
+            </article>
+            
+          </div>
+          <div class="noticia-wrap col-md-4">
+            <img src="http://www.footballaustralia.com.au/di/library/Football_Australia/2b/d3/ffa-have-confirmed-the-uniform-the-socceroos-will-wear-for-their-world-cup-campaign_pfvyauvzn4av1hfqf6nou4aau.jpg?t=-1825343594" alt="" class="img-circle img-thumbnail img-noticia">
+            <article>
+              <h3>Impactante noticia3</h3>
+              <p>Deleniti id necessitatibus natus fugiat mollitia maxime est. Dolores doloremque, impedit dolor blanditiis aspernatur, obcaecati doloribus, recusandae cupiditate vitae quasi labore, dolore adipisci necessitatibus. Corporis quibusdam modi, alias dolores aliquid.</p>
+              <button class="btn btn-info pull-right">Leer más ...</button>
+            </article>
+            
+          </div>
+        </div>
+
+        <br>
+
+        <div id="footer" class="footer">
+          <img src="static/img/tw.png" class="SNicon img-thumbnail img-circle pull-right" style="margin-right: 20px;">
+          <img src="static/img/fb.png" class="SNicon img-thumbnail img-circle pull-right">
+          <div class="row" style="padding: 30px 0">
+            <div class="col-md-3" style="text-align: center">
+              <img src="static/img/logo.png" class="logo" width="220">
+            </div>
+            <div class="col-md-2">
+              <h4><b>Sobre Nosotros</b></h4>
+              <p>Somos un grupo de desarrolladores que aman las nuevas tecnologías</p>
+              <!-- <dt>
+                <dd>Holi</dd>
+                <dd>Holi2</dd>
+              </dt> -->
+            </div>
+            <div class="col-md-2">
+              <h4><b>Contacto</b></h4>
+              <div class="icon-wrap">
+                <div class="icon">
+                  <span class="glyphicon glyphicon-earphone"></span>
+                </div>
+                <label style="font-weight: normal !important"> 99995867</label>
+              </div>
+              <div class="icon-wrap">
+                <div class="icon">
+                  <span class="glyphicon glyphicon-envelope"></span>
+                </div>
+                <label style="font-weight: normal !important"> contacto@alengi.com</label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+        <script src="static/js/vendor/bootstrap.min.js"></script>
+        <script src="static/js/vendor/underscore-min.js"></script>
+        <script src="static/js/vendor/backbone-min.js"></script>
+
+        <script src="static/js/vendor/moment.js"></script>
+        <script src="static/js/vendor/fullcalendar.min.js"></script>
+        
+
+        <script src="static/js/main.js"></script>
+
+        <script>
+          var options = {
+            theme: true,
+            header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+            },
+            timeFormat: {
+            agenda: 'h(:mm)t{ - h(:mm)t}',
+            '': 'h(:mm)t{-h(:mm)t }'
+            },
+            monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ], 
+            monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+            dayNames: [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            dayNamesShort: ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'],
+            buttonText: {
+              today: 'hoy',
+              month: 'mes',
+              week: 'semana',
+              day: 'día'
+            }
+          };
+
+          var d;
+
+    //$('#calendar').fullCalendar(options);
+
+          $(document).ready(function() {
+
+            $('#tooltip-karma').tooltip();
+            
+            $('#calendar').fullCalendar({
+              header: {
+                left: '',
+                center: 'title,prev,next',
+                right: ''
+              },
+              theme: true,
+              eventAfterAllRender: function(){
+                $(".fc-prev-button.ui-button.ui-state-default").html("<span class='glyphicon glyphicon-chevron-left'></span>")
+                $(".fc-next-button.ui-button.ui-state-default").html("<span class='glyphicon glyphicon-chevron-right'></span>")
+              },
+              disableDragging: true,
+              defaultDate: '2014-09-12',
+              editable: false,
+              eventLimit: true, // allow "more" link when too many events
+              timeFormat: {
+                agenda: 'h(:mm)t{ - h(:mm)t}',
+                '': 'h(:mm)t{-h(:mm)t }'
+              },
+              monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ], 
+              monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+              dayNames: [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+              dayNamesShort: ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'],
+              buttonText: {
+                today: 'hoy',
+                month: 'mes',
+                week: 'semana',
+                day: 'día'
+              },
+              dayRender: function (date, cell) {
+                  var today = new Date();
+                  if (parseInt(date.format("D")) === today.getDate()) {
+                    $("[data-date='"+ $(cell).data("date") +"']").css("font-size","2em");
+                    /*d=cell;
+                    console.log(cell);*/
+                  }
+              },
+              events: [
+                {
+                  title: 'All Day Event',
+                  start: '2014-09-01'
+                },
+                {
+                  title: 'Long Event',
+                  start: '2014-09-07',
+                  end: '2014-09-10'
+                },
+                {
+                  id: 999,
+                  title: 'Repeating Event',
+                  start: '2014-09-09T16:00:00'
+                },
+                {
+                  id: 999,
+                  title: 'Repeating Event',
+                  start: '2014-09-16T16:00:00'
+                },
+                {
+                  title: 'Conference',
+                  start: '2014-09-11',
+                  end: '2014-09-13'
+                },
+                {
+                  title: 'Meeting',
+                  start: '2014-09-12T10:30:00',
+                  end: '2014-09-12T12:30:00'
+                },
+                {
+                  title: 'Lunch',
+                  start: '2014-09-12T12:00:00'
+                },
+                {
+                  title: 'Meeting',
+                  start: '2014-09-12T14:30:00'
+                },
+                {
+                  title: 'Happy Hour',
+                  start: '2014-09-12T17:30:00'
+                },
+                {
+                  title: 'Dinner',
+                  start: '2014-09-12T20:00:00'
+                },
+                {
+                  title: 'Birthday Party',
+                  start: '2014-09-13T07:00:00'
+                },
+                {
+                  title: 'Click for Google',
+                  url: 'http://google.com/',
+                  start: '2014-09-28'
+                }
+              ]
+            });
+            
+          });
+        </script>
+
+    </body>
+</html>
