@@ -8,6 +8,7 @@ package pe.edu.ulima.model.dao;
 
 import java.util.Date;
 import java.util.List;
+import pe.edu.ulima.model.beans.Cancha;
 import pe.edu.ulima.model.beans.Partido;
 import pe.edu.ulima.model.beans.Usuario;
 
@@ -21,7 +22,7 @@ public interface FactoryDAO {
     
     public List<Partido> getPartidos();
     public Partido insertPartido(String nombre, int hora, Date fecha);
-    public List<Partido> disponiblesDia(String nombre, int hora, Date fecha);
+    public List<Cancha> disponiblesCancha(int hora, Date fecha);
    
 
 } 

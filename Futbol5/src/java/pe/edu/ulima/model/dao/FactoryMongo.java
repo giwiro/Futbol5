@@ -4,15 +4,16 @@ package pe.edu.ulima.model.dao;
 import com.google.code.morphia.Morphia;
 import com.mongodb.Mongo;
 import java.io.UnsupportedEncodingException;
-import pe.edu.ulima.model.beans.Usuario;
-import pe.edu.ulima.util.MongoUtil;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import pe.edu.ulima.model.beans.Cancha;
 import pe.edu.ulima.model.beans.Partido;
+import pe.edu.ulima.model.beans.Usuario;
+import pe.edu.ulima.util.MongoUtil;
 
 /**
  *
@@ -25,13 +26,15 @@ public class FactoryMongo implements FactoryDAO {
     private UsuarioMongoDAO userDao;
     private PartidoMongoDAO partidoMongoDao;
     private final String dbname = "futbol5";
+    private CanchaMongoDAO canchaMongoDao;
     
     public void initiate(){
         mongo = MongoUtil.getMongo();
         morphia = new Morphia();
         morphia.map(Usuario.class);
         userDao = new UsuarioMongoDAO(mongo, morphia, dbname);
-        partidoMongoDao = new PartidoMongoDAO(mongo, morphia, dbname);
+        partidoMongoDao = new PartidoMongoDAO(mongo, morphia, dbname); //refactori por aqui
+        canchaMongoDao = new CanchaMongoDAO(mongo, morphia, dbname); //refactori por aqui
     }
     
     @Override
@@ -90,8 +93,10 @@ public class FactoryMongo implements FactoryDAO {
     }
 
     @Override
-    public List<Partido> disponiblesDia(String nombre, int hora, Date fecha) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Cancha> disponiblesCancha(int hora, Date fecha) {
+       initiate();
+       List<Cancha> CanchasDisp = canchaMongoDao.disponiblesCancha(fecha, hora);
+        return CanchasDisp;
     }
     
 }
