@@ -72,10 +72,9 @@
           </div>
           <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="" data-toggle="modal" data-target="#fecha_hora">Crear Sala</a></li>
+              <li class="active"><a href="" data-toggle="modal">Crear Sala</a></li>
               <li class="pad">
                 <label for="Hola">Hola </label>
-                <a href="#"><%= session.getAttribute( "Nombre" ) %></a>
                 <span id="tooltip-karma" class="badge pull-right hidden-xs" style="margin-top:23px; cursor: default" data-toggle="tooltip" data-placement="bottom" title="Puntos de Karma"><%= session.getAttribute( "Karma" ) %></span>
                 <span class="badge pull-right visible-xs" style="margin-top:9px"><%= session.getAttribute( "Karma" ) %></span>
               </li>
@@ -87,22 +86,23 @@
         <div class="row">
             <div class="wrap-input col-md-12">
               <select name="" id="">
-                <option value="7">7am - 8am</option>
-                <option value="8">8am - 9am</option>
-                <option value="9">9am - 10am</option>
-                <option value="10">10am - 11am</option>
-                <option value="11">11am - 12am</option>
-                <option value="12">12am - 1pm</option>
-                <option value="13">1pm - 2pm</option>
-                <option value="14">2pm - 4pm</option>
-                <option value="15">3pm - 5pm</option>
-                <option value="16">4pm - 6pm</option>
-                <option value="17">5pm - 6pm</option>
-                <option value="18">6pm - 7pm</option>
-                <option value="19">7pm - 8pm</option>
-                <option value="20">8pm - 9pm</option>
-                <option value="21">9pm - 10pm</option>
+                <option id="hora_7" value="7">7am - 8am</option>
+                <option id="hora_8" value="8">8am - 9am</option>
+                <option id="hora_9" value="9">9am - 10am</option>
+                <option id="hora_10" value="10">10am - 11am</option>
+                <option id="hora_11" value="11">11am - 12am</option>
+                <option id="hora_12" value="12">12am - 1pm</option>
+                <option id="hora_13" value="13">1pm - 2pm</option>
+                <option id="hora_14" value="14">2pm - 4pm</option>
+                <option id="hora_15" value="15">3pm - 5pm</option>
+                <option id="hora_16" value="16">4pm - 6pm</option>
+                <option id="hora_17" value="17">5pm - 6pm</option>
+                <option id="hora_18" value="18">6pm - 7pm</option>
+                <option id="hora_19" value="19">7pm - 8pm</option>
+                <option id="hora_20" value="20">8pm - 9pm</option>
+                <option id="hora_21" value="21">9pm - 10pm</option>
               </select>
+              <label >fecha: ${fecha}</label>
               <input type="text" id="datepicker" placeholder="Ingresar Fecha">
               <button class="btn btn-default">Check</button>
             </div>
@@ -118,7 +118,7 @@
               <div class="panel-heading"><h4 style="margin:0">Canchas Disponibles</h4></div>
 
               <!-- List group -->
-              <ul class="list-group">
+              <ul id="lista_canchas" class="list-group">
                 <li class="list-group-item">
                   <h4>Cancha La CTM</h4>
                   <label>Calle A</label>
@@ -134,7 +134,7 @@
 
           </div>
           <div class="col-md-8">
-            <h1>Título de la pichanga</h1>
+            <h1>${nombrePartido}</h1>
             <br>
             <div class="row">
               <div class="col-md-6">
@@ -198,7 +198,7 @@
             <br>
 
             <h3>Sala de espera</h3>
-
+            <br>
             <div class="row">
               <div class="col-md-12">
 
@@ -226,6 +226,9 @@
 
           </div>
         </div>
+
+        <input type="submit" class="btn btn-lg btn-block btn-success" value="Registrar Oficialmente el Partido">
+        <br>
 
         <br>
 
@@ -291,23 +294,61 @@
          $.datepicker.setDefaults($.datepicker.regional['es']);
 
          $(function() {
-          $( "#datepicker" ).datepicker({ minDate: 1 });
-        });
+            var hora_picked = ${hora} || null;
+            if(hora_picked){
+              $("#hora_"+hora_picked).attr("selected",'selected');
+            }
+            var $datepicker = $( "#datepicker" );
+            var init = "${fecha}";
+            $datepicker.datepicker({ minDate: 1});
+
+            if(init.length > 0){
+              $datepicker.datepicker("setDate", new Date(init));
+              //console.log("INIT DATE","${fecha}",new Date("${fecha}"));
+            }
+
+          });
         </script>
 
         <script src="static/js/vendor/bootstrap.min.js"></script>
         
         <script>
 
-          $('input:radio').screwDefaultButtons({
-            image: 'url("static/img/radio-button/radioSmall.jpg")',
-            width: 43,
-            height: 43
-          });
-        </script>
+          var Brush = function(){
+            var $wrap = $("#lista_canchas");
 
-        <script>
+            this._render = function(list, override){
+              if(override){
+                $wrap.html("");
+              }
+              for(l in list){
+                $wrap.append('\
+                  <li class="list-group-item">\
+                    <h4>'+list[l].nombre+'</h4>\
+                    <label>'+list[l].direccion+'</label>\
+                    <input type="radio" name="cancha" value="'+list[l]._id+'">\
+                  </li>\
+                  ');
+              }
+              $('input:radio').screwDefaultButtons({
+                image: 'url("static/img/radio-button/radioSmall.jpg")',
+                width: 43,
+                height: 43
+              });
+              return this;
+            }
+          }
+
+          var brush = new Brush();
+          brush._render([
+            {nombre: "Cancha 1", direccion: "Calle las Begonias 124", _id: "bsd56fnsv382bdog6sd0"},
+            {nombre: "Cancha 2", direccion: "Jr. Salaverry 345", _id: "dudt12354dfgebjcu76e2"}
+            ]
+          ,true);
+
           
         </script>
+
+        
     </body>
 </html>

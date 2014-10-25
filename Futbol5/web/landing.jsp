@@ -128,9 +128,8 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
                 <h4 class="modal-title">Llena los datos</h4>
               </div>
-              <div class="modal-body">
-
-                <form action="RegistroUser" method="post">
+              <form action="RegistroPartido" method="post">
+                <div class="modal-body">
                     <div class="modal-body">
                         <input class="form-control" type="text" name="nombrePartido" placeholder="Nombre del Partido" required="required">
                         <br>
@@ -153,13 +152,12 @@
                         </select>
                         <br>
                         <input class="form-control" type="text" id="datepicker" name="fecha" placeholder="Ingresar Fecha" required="required">
-                </form>
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Crear Sala</button>
-              </div>
+                  </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                  <input type="submit" class="btn btn-primary" value="Crear Sala">
+                </div>
+              </form>
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
