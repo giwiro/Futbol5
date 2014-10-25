@@ -77,7 +77,7 @@ public class FactoryMongo implements FactoryDAO {
     }
 
     @Override
-    public Partido insertPartido(String nombre, Date hora) {
+    public Partido insertPartido(String nombre, int hora, Date fecha) {
         initiate();
         Partido partidoInsert = new Partido();
         partidoInsert.setName(nombre);
@@ -87,6 +87,11 @@ public class FactoryMongo implements FactoryDAO {
         Partido partido = partidoMongoDao.insertPartido(partidoInsert);
         
         return partido;
+    }
+
+    @Override
+    public List<Partido> disponiblesDia(String nombre, int hora, Date fecha) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

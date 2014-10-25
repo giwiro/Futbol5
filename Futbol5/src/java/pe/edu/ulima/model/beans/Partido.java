@@ -14,7 +14,8 @@ public class Partido{
     @Id 
     private String _id;
     private String name;
-    private Date hora;
+    private Date fecha;
+    private int hora;
     private String estado;
 
     public String getId() {
@@ -33,11 +34,11 @@ public class Partido{
         this.name = name;
     }
 
-    public Date getHora() {
+    public int getHora() {
         return hora;
     }
 
-    public void setHora(Date hora) {
+    public void setHora(int hora) {
         this.hora = hora;
     }
 
@@ -48,6 +49,16 @@ public class Partido{
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+    
+    
 
 
 
