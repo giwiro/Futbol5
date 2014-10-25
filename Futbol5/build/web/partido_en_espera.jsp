@@ -85,7 +85,7 @@
   
         <div class="row">
             <div class="wrap-input col-md-12">
-              <select name="" id="">
+              <select name="" id="hora">
                 <option id="hora_7" value="7">7am - 8am</option>
                 <option id="hora_8" value="8">8am - 9am</option>
                 <option id="hora_9" value="9">9am - 10am</option>
@@ -102,9 +102,8 @@
                 <option id="hora_20" value="20">8pm - 9pm</option>
                 <option id="hora_21" value="21">9pm - 10pm</option>
               </select>
-              <label >fecha: ${fecha}</label>
               <input type="text" id="datepicker" placeholder="Ingresar Fecha">
-              <button class="btn btn-default">Check</button>
+              <button id="check" class="btn btn-default">Check</button>
             </div>
               
         </div>
@@ -370,17 +369,17 @@
                 var _arr = brush.getArr(),
                     disp = [];
                 
-                for(i in no_disp){
+                for(i in _arr){
                   var y = i;
-                  for(j in _arr){
-                    if(_arr[j]._id == no_disp[i]._id){
-                      console.log(_arr[j]._id + "==" + no_disp[i]._id);
+                  for(j in no_disp){
+                    if(no_disp[j]._id == _arr[i]._id){
+                      console.log(no_disp[j]._id + "==" + _arr[i]._id);
                       y = null;
                       break;
                     }
                   }
                   console.log("y: " + y);
-                  if(y){
+                  if( y!== null){
                     disp.push(_arr[y])
                   }
                 }
@@ -394,6 +393,13 @@
               }
             })
           }
+
+          $("#check").on('click',function(){
+            var hora = $("#hora").val(),
+                fecha = $("#datepicker").val();
+
+            check(fecha,hora);
+          });
 
           check('${fecha_talcual}', ${hora});
 
