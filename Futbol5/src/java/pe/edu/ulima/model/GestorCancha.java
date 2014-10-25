@@ -25,11 +25,14 @@ public class GestorCancha {
         mFactory = factoryDAO;
     }
     
-    public List<Cancha> getDispCanchas(Date fecha, int hora){
-        List<Cancha> dispCanchas = mFactory.disponiblesCancha(hora, fecha);     
+    public List<Cancha> getnoDispCanchas(Date fecha, int hora){
+        List<Cancha> dispCanchas = mFactory.nodisponiblesCancha(hora, fecha);     
         return dispCanchas;
     }
     
-    
+    public List<Cancha> getCanchas(){
+        List<Cancha> allcanchas = mFactory.getCanchas();
+        return allcanchas;
+    }
     
 }

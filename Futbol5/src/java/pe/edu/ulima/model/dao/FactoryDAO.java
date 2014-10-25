@@ -22,7 +22,8 @@ public interface FactoryDAO {
     
     public List<Partido> getPartidos();
     public Partido insertPartido(String nombre, int hora, Date fecha);
-    public List<Cancha> disponiblesCancha(int hora, Date fecha);
+    public List<Cancha> nodisponiblesCancha(int hora, Date fecha);
+    public List<Cancha> getCanchas();
    
 
 } 

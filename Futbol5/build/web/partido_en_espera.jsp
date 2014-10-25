@@ -313,18 +313,31 @@
         <script src="static/js/vendor/bootstrap.min.js"></script>
         
         <script>
+          var no_disp = {};
 
-          var Brush = function(){
-            var $wrap = $("#lista_canchas");
+          
+          
+          //console.log("hora",'${hora}');
+          //console.log("fecha_talcual",'${fecha_talcual}');
+          
+
+          var Brush = function(array){
+            var $wrap = $("#lista_canchas"),
+                _arr = JSON.parse(array);
+
+            this.getArr = function(){
+              return _arr;
+            }
 
             this._render = function(list, override){
               if(override){
                 $wrap.html("");
               }
+              //onsole.log("_arr",_arr);
               for(l in list){
                 $wrap.append('\
                   <li class="list-group-item">\
-                    <h4>'+list[l].nombre+'</h4>\
+                    <h4>'+list[l].name+'</h4>\
                     <label>'+list[l].direccion+'</label>\
                     <input type="radio" name="cancha" value="'+list[l]._id+'">\
                   </li>\
@@ -339,12 +352,50 @@
             }
           }
 
-          var brush = new Brush();
-          brush._render([
-            {nombre: "Cancha 1", direccion: "Calle las Begonias 124", _id: "bsd56fnsv382bdog6sd0"},
-            {nombre: "Cancha 2", direccion: "Jr. Salaverry 345", _id: "dudt12354dfgebjcu76e2"}
-            ]
-          ,true);
+          var brush = new Brush('${todasCanchas}');
+          brush._render(brush.getArr(),true);
+
+
+          function check(fecha, hora){
+            $.ajax({
+              url:'CanchasNoDisponibles',
+              type:'POST',
+              data:{
+                fecha: fecha,
+                hora: hora
+              },
+              success: function(data){
+                no_disp = data;
+                console.log("data no_disp",no_disp);
+                var _arr = brush.getArr(),
+                    disp = [];
+                
+                for(i in no_disp){
+                  var y = i;
+                  for(j in _arr){
+                    if(_arr[j]._id == no_disp[i]._id){
+                      console.log(_arr[j]._id + "==" + no_disp[i]._id);
+                      y = null;
+                      break;
+                    }
+                  }
+                  console.log("y: " + y);
+                  if(y){
+                    disp.push(_arr[y])
+                  }
+                }
+
+                brush._render(disp, true);
+
+                console.log("disp",disp);
+              },
+              error: function(err){
+                console.error(err);
+              }
+            })
+          }
+
+          check('${fecha_talcual}', ${hora});
 
           
         </script>

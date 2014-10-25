@@ -6,12 +6,14 @@
 
 package pe.edu.ulima.futbolapp.servlets;
 
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -19,7 +21,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import pe.edu.ulima.model.GestorCancha;
 import pe.edu.ulima.model.GestorPartido;
+import pe.edu.ulima.model.beans.Cancha;
 import pe.edu.ulima.model.beans.Partido;
 import pe.edu.ulima.model.dao.FactoryMongo;
 
@@ -54,6 +58,8 @@ public class RegistroPartido extends HttpServlet {
             throws ServletException, IOException {
         
         String f = request.getParameter("fecha");
+        
+        request.setAttribute("fecha_talcual", f);
         DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
         Date fecha = null;
         try {
@@ -65,19 +71,16 @@ public class RegistroPartido extends HttpServlet {
         String nombre = request.getParameter("nombrePartido");
         int hora = Integer.parseInt(request.getParameter("hora"));
         
-        System.out.println("todo bien I");
         GestorPartido.getInstance().setFactoryDAO(new FactoryMongo());
         Partido partido = GestorPartido.getInstance().register(
                 nombre,
                 hora,
                 fecha
         );
-        System.out.println("todo bien II: " + partido.getName());
         
         RequestDispatcher rd = null;
         
         if(partido != null){
-            System.out.println("SI EXISTE ESE PARTIDO");
             
             request.setAttribute("nombrePartido", partido.getName());
             request.setAttribute("hora", partido.getHora());
@@ -90,10 +93,25 @@ public class RegistroPartido extends HttpServlet {
             mes++;
             int dia = cal.get(Calendar.DAY_OF_MONTH);
             dia++;
+            
+            GestorCancha.getInstance().setFactoryDAO(new FactoryMongo());
+            List<Cancha> disponibles = GestorCancha.getInstance().getCanchas();
+
+            final Gson gson = new Gson();
+            String formatJson = gson.toJson(disponibles);
+            
+            request.setAttribute("todasCanchas", formatJson);
+
+            /*response.setContentType("application/json");
+            try (PrintWriter out = response.getWriter()) {
+                out.println(formatJson);
+            }*/
 
             /*request.setAttribute("dia", dia);
             request.setAttribute("mes", mes);
             request.setAttribute("anio", anio);*/
+        
+        
             
             request.setAttribute("fecha", anio+"-"+mes+"-"+dia);
             
@@ -102,8 +120,6 @@ public class RegistroPartido extends HttpServlet {
             System.out.println("no existe :(");
             rd = request.getRequestDispatcher("landing.jsp");
         }
-        
-        System.out.println("todo bien III");
         
         
         rd.forward(request, response);

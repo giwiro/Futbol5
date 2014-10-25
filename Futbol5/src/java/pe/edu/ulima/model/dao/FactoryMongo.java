@@ -93,10 +93,17 @@ public class FactoryMongo implements FactoryDAO {
     }
 
     @Override
-    public List<Cancha> disponiblesCancha(int hora, Date fecha) {
+    public List<Cancha> nodisponiblesCancha(int hora, Date fecha) {
        initiate();
-       List<Cancha> CanchasDisp = canchaMongoDao.disponiblesCancha(fecha, hora);
-        return CanchasDisp;
+       List<Cancha> CanchasnoDisp = canchaMongoDao.disponiblesCancha(fecha, hora);
+        return CanchasnoDisp;
+    }
+
+    @Override
+    public List<Cancha> getCanchas() {
+        initiate();
+        List<Cancha> allcanchas = canchaMongoDao.getCancha();
+        return allcanchas;
     }
     
 }

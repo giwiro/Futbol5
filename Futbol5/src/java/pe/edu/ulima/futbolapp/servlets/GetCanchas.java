@@ -9,12 +9,7 @@ package pe.edu.ulima.futbolapp.servlets;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,8 +23,8 @@ import pe.edu.ulima.model.dao.FactoryMongo;
  *
  * @author iEnzo
  */
-@WebServlet(name = "CanchasDisponibles", urlPatterns = {"/CanchasDisponibles"})
-public class CanchasDisponibles extends HttpServlet {
+@WebServlet(name = "GetCanchas", urlPatterns = {"/GetCanchas"})
+public class GetCanchas extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,23 +36,17 @@ public class CanchasDisponibles extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ParseException {
+            throws ServletException, IOException {
         GestorCancha.getInstance().setFactoryDAO(new FactoryMongo());
-        
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MMM/yyyy");
-        Date date = formatter.parse(request.getParameter("fecha"));
-        
-        List<Cancha> disponibles = GestorCancha.getInstance().getDispCanchas(
-                date, Integer.parseInt(request.getParameter("hora")));
-        
+        List<Cancha> disponibles = GestorCancha.getInstance().getCanchas();
+         
         final Gson gson = new Gson();
         String formatJson = gson.toJson(disponibles);
         
         response.setContentType("application/json");
         try (PrintWriter out = response.getWriter()) {
-         out.println(formatJson);
+            out.println(formatJson);
         }
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -72,11 +61,7 @@ public class CanchasDisponibles extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ParseException ex) {
-            Logger.getLogger(CanchasDisponibles.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -90,11 +75,7 @@ public class CanchasDisponibles extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ParseException ex) {
-            Logger.getLogger(CanchasDisponibles.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
