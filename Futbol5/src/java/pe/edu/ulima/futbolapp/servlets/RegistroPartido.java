@@ -7,59 +7,39 @@
 package pe.edu.ulima.futbolapp.servlets;
 
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import pe.edu.ulima.model.GestorSession;
-import pe.edu.ulima.model.GestorUsuario;
-import pe.edu.ulima.model.beans.Usuario;
-import pe.edu.ulima.model.dao.FactoryMongo;
 
 /**
  *
- * @author iEnzo
+ * @author Davalos
  */
-@WebServlet(name = "LoginUser", urlPatterns = {"/LoginUser"})
-public class LoginUser extends HttpServlet {
+public class RegistroPartido extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ParseException {
         
-        GestorUsuario.getInstance().setFactoryDAO(new FactoryMongo());
-        
-        Usuario user = GestorUsuario.getInstance().loguin(
-                request.getParameter("nickname"), request.getParameter("password"));
-        response.setContentType("text/html;charset=UTF-8");
-        RequestDispatcher rd = null;
-        if(user != null){
-            HttpSession ses = request.getSession(true);
-            GestorSession.getInstance().putUser(ses, user);
-            rd = request.getRequestDispatcher("landing.jsp");
-        }else{
-            request.setAttribute("fail","display: block");
-            rd = request.getRequestDispatcher("index.jsp");
-        }
-        
-        rd.forward(request, response);
-        
-        /*final Gson gson = new Gson();
-        String formatJson = gson.toJson(user);
-                
-        
-        response.setContentType("application/json");
-        try (PrintWriter out = response.getWriter()) {
+        String f = request.getParameter("fecha");
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+        Date fecha = formatter.parse(f);
 
-            if(user != null){
-                out.println(formatJson);
-            }else{
-                out.println("<h1>Tu usuario o password sin incorrectos </h1>");
-            }
-        }*/
-     
+        String nombre = request.getParameter("nombrePartido");
+        int hora = Integer.parseInt(request.getParameter("hora"));
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -74,7 +54,6 @@ public class LoginUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**
@@ -88,7 +67,6 @@ public class LoginUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**

@@ -47,7 +47,7 @@ public class RegistroUser extends HttpServlet {
         );
         
         RequestDispatcher rd = null;
-        
+        response.setContentType("text/html;charset=UTF-8");
         if(user != null){
             HttpSession ses = request.getSession(true);
             GestorSession.getInstance().putUser(ses, user);

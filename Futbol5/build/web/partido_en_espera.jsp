@@ -38,6 +38,18 @@
             display: inline-block;
             margin-top: -7px;
           }
+          .styledRadio, .styledCheckbox {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            margin-top: -21px;
+          }
+          h4{
+            margin-bottom: 0;
+          }
+          h1{
+            text-align: center;
+          }
         </style>
   
 
@@ -60,20 +72,20 @@
           </div>
           <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">Crear Sala</a></li>
+              <li><a href="" data-toggle="modal" data-target="#fecha_hora">Crear Sala</a></li>
               <li class="pad">
                 <label for="Hola">Hola </label>
-                <a href="#">giwiro</a>
-                <span id="tooltip-karma" class="badge pull-right hidden-xs" style="margin-top:23px; cursor: default" data-toggle="tooltip" data-placement="bottom" title="Puntos de Karma">42</span>
-                <span class="badge pull-right visible-xs" style="margin-top:9px">42</span>
+                <a href="#"><%= session.getAttribute( "Nombre" ) %></a>
+                <span id="tooltip-karma" class="badge pull-right hidden-xs" style="margin-top:23px; cursor: default" data-toggle="tooltip" data-placement="bottom" title="Puntos de Karma"><%= session.getAttribute( "Karma" ) %></span>
+                <span class="badge pull-right visible-xs" style="margin-top:9px"><%= session.getAttribute( "Karma" ) %></span>
               </li>
-              <li><a href="#">Logout</a></li>
+              <li><a href="Logout">Logout</a></li>
             </ul>
           </div>
         </div>
   
         <div class="row">
-            <div class="wrap-input col-md-10 col-md-offset-1">
+            <div class="wrap-input col-md-12">
               <select name="" id="">
                 <option value="7">7am - 8am</option>
                 <option value="8">8am - 9am</option>
@@ -96,9 +108,123 @@
             </div>
               
         </div>
-
+        <br>
+        <br>
         <div class="row">
-          
+          <div class="col-md-3 col-md-offset-1">
+
+            <div class="panel panel-default">
+              <!-- Default panel contents -->
+              <div class="panel-heading"><h4 style="margin:0">Canchas Disponibles</h4></div>
+
+              <!-- List group -->
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <h4>Cancha La CTM</h4>
+                  <label>Calle A</label>
+                  <input type="radio" name="cancha" value="mongo_id">
+                </li>
+                <li class="list-group-item">
+                  <h4>Cancha La CTM</h4>
+                  <label>Calle B</label>
+                  <input type="radio" name="cancha" value="mongo_id">
+                </li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="col-md-8">
+            <h1>Título de la pichanga</h1>
+            <br>
+            <div class="row">
+              <div class="col-md-6">
+
+                <div class="panel panel-default">
+                  <!-- Default panel contents -->
+                  <div class="panel-heading" style="text-align: center">Equipo A</div>
+
+                  <!-- List group -->
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <label>Gi Wah</label>
+                    </li>
+                    <li class="list-group-item">
+                      <label></label>
+                    </li>
+                    <li class="list-group-item">
+                      <label></label>
+                    </li>
+                    <li class="list-group-item">
+                      <label></label>
+                    </li>
+                    <li class="list-group-item">
+                      <label></label>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+              <div class="col-md-6">
+                
+                <div class="panel panel-default">
+                  <!-- Default panel contents -->
+                  <div class="panel-heading" style="text-align: center">Equipo B</div>
+
+                  <!-- List group -->
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <label>Gi Wah</label>
+                    </li>
+                    <li class="list-group-item">
+                      <label></label>
+                    </li>
+                    <li class="list-group-item">
+                      <label></label>
+                    </li>
+                    <li class="list-group-item">
+                      <label></label>
+                    </li>
+                    <li class="list-group-item">
+                      <label></label>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+            
+            <br>
+            <hr>
+            <br>
+
+            <h3>Sala de espera</h3>
+
+            <div class="row">
+              <div class="col-md-12">
+
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <label>Gi Wah</label>
+                  </li>
+                  <li class="list-group-item">
+                    <label></label>
+                  </li>
+                  <li class="list-group-item">
+                    <label></label>
+                  </li>
+                  <li class="list-group-item">
+                    <label></label>
+                  </li>
+                  <li class="list-group-item">
+                    <label></label>
+                  </li>
+                </ul>
+
+
+              </div>
+            </div>
+
+          </div>
         </div>
 
         <br>
@@ -142,6 +268,7 @@
 
         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
         <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+        <script src="static/js/vendor/jquery.screwdefaultbuttonsV2.min.js"></script>
         
         <script>
           $.datepicker.regional['es'] = {
@@ -169,7 +296,14 @@
         </script>
 
         <script src="static/js/vendor/bootstrap.min.js"></script>
-
         
+        <script>
+
+          $('input:radio').screwDefaultButtons({
+            image: 'url("static/img/radio-button/radioSmall.jpg")',
+            width: 43,
+            height: 43
+          });
+        </script>
     </body>
 </html>

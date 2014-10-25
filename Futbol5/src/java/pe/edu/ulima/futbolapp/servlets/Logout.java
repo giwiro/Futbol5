@@ -35,7 +35,7 @@ public class Logout extends HttpServlet {
         HttpSession ses = request.getSession(true);
         
         GestorSession.getInstance().destroy(ses);
-        
+        response.setContentType("text/html;charset=UTF-8");
         RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
         rd.forward(request, response);
     }

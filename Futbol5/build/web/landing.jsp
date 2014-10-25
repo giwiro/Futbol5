@@ -152,7 +152,7 @@
                           <option value="21">9pm - 10pm</option>
                         </select>
                         <br>
-                        <input class="form-control" type="text" id="datepicker" placeholder="Ingresar Fecha" required="required">
+                        <input class="form-control" type="text" id="datepicker" name="fecha" placeholder="Ingresar Fecha" required="required">
                 </form>
 
               </div>

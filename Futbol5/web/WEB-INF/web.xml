@@ -8,6 +8,10 @@
         <servlet-name>Logout</servlet-name>
         <servlet-class>pe.edu.ulima.futbolapp.servlets.Logout</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegistroPartido</servlet-name>
+        <servlet-class>pe.edu.ulima.futbolapp.servlets.RegistroPartido</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistroUser</servlet-name>
         <url-pattern>/RegistroUser</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroPartido</servlet-name>
+        <url-pattern>/RegistroPartido</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -9,7 +9,6 @@ package pe.edu.ulima.util;
 import com.mongodb.Mongo;
 import com.mongodb.MongoException;
 import java.net.UnknownHostException;
-import org.slf4j.LoggerFactory;
 
 /**
  *
