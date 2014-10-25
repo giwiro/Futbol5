@@ -17,11 +17,8 @@ public class CanchaMongoDAO extends BasicDAO<Cancha, ObjectId>{
      
      public List<Cancha> disponiblesCancha(Date fecha, int hora){
          return ds.find(Cancha.class)
-                 .field("calendar.fecha").notEqual(fecha)
+                 .field("calendar.fecha").equal(fecha)
                  .field("calendar.hora").notEqual(hora)
                  .asList();
-     }
-     
-     
-    
+     }  
 }

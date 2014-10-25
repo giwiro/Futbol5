@@ -18,6 +18,7 @@ public class Cancha {
     @Id
     private String _id;
     private String name;
+    private String direccion;
     @Embedded
     private List<Calendar> calendar;
 
@@ -43,6 +44,14 @@ public class Cancha {
 
     public void setCalendar(List<Calendar> calendar) {
         this.calendar = calendar;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
     
     
