@@ -50,6 +50,7 @@ public class FactoryMongo implements FactoryDAO {
         userInsert.setName(nombre);
         userInsert.setLastname(apellido);
         userInsert.setNickname(nickname);
+        userInsert.setKarma(0);
         
         MessageDigest md = null;
         try {

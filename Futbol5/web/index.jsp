@@ -17,6 +17,12 @@
           body {
             background: none;
           }
+          .fail{
+            display: none;
+            margin: auto;
+            margin-bottom: 10px;
+            width: 81%
+          }
         </style>
 
         <script src="static/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
@@ -28,24 +34,30 @@
         <div class="login">
             <img src="static/img/logo.png" alt="">
             <br><br>
-            <form action="LoginUser" method="post">
-            <div class="group-input">
-                <span class="icon-glyph">
-                    <span class="glyphicon glyphicon-user"></span>  
-                    <div class="arrow-right"></div>
-                </span>
-                <input type="text" placeholder="Usuario" name="nickname">
-            </div>
 
-            <div class="group-input">
-                <span class="icon-glyph">
-                    <span class="glyphicon glyphicon-lock"></span>  
-                    <div class="arrow-right"></div>
-                </span>
-                <input type="password" placeholder="Contraseña" name="password">
-            </div>
-               
-            <button type="submit" class="login btn btn-lg- btn-block btn-primary text-login bold">INGRESAR</button>
+            
+
+            <form action="LoginUser" method="post">
+                <div class="fail alert alert-danger" role="alert" style="${fail}">
+                    <b>¡ Usuario o Password incorrectos !</b>
+                </div>
+                <div class="group-input">
+                    <span class="icon-glyph">
+                        <span class="glyphicon glyphicon-user"></span>  
+                        <div class="arrow-right"></div>
+                    </span>
+                    <input type="text" placeholder="Usuario" name="nickname">
+                </div>
+
+                <div class="group-input">
+                    <span class="icon-glyph">
+                        <span class="glyphicon glyphicon-lock"></span>  
+                        <div class="arrow-right"></div>
+                    </span>
+                    <input type="password" placeholder="Contraseña" name="password">
+                </div>
+                   
+                <button type="submit" class="login btn btn-lg- btn-block btn-primary text-login bold">INGRESAR</button>
             </form> 
             <a href="" class="text-login bold" data-toggle="modal" data-target="#modalResgitro">¿ NO ERES MIEMBRO AÚN ? REGÍSTRATE !</a>
             <br><br>
@@ -53,6 +65,7 @@
             
             
             <div id="modalResgitro" class="modal fade">
+                
                 <div class="modal-dialog">
                   <div class="modal-content">
 
@@ -62,11 +75,24 @@
                     </div>
                     <form action="RegistroUser" method="post">
                         <div class="modal-body">
-                            <input type="text" name="dni" placeholder="dni" /><br>
-                            <input type="text" name="nombre" placeholder="nombre" /><br>
-                            <input type="text" name="apellido" placeholder="apellido" /><br>
-                            <input type="text" name="nickname" placeholder="nick" /><br>
-                            <input type="text" name="password" placeholder="password" /><br>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    imagten paja
+                                </div>
+                                <div class="col-md-8" style="border-left: solid 1px grey">
+                                    <input class="form-control" type="text" name="dni" placeholder="dni" />
+                                    <br>
+                                    <input class="form-control" type="text" name="nombre" placeholder="nombre" />
+                                    <br>
+                                    <input class="form-control" type="text" name="apellido" placeholder="apellido" />
+                                    <br>
+                                    <input class="form-control" type="text" name="nickname" placeholder="nick" />
+                                    <br>
+                                    <input class="form-control" type="text" name="password" placeholder="password" />
+                                    <br>
+                                </div>
+                            </div>
+                            
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                           <input type="submit" class="btn btn-primary" value="Registrar" />
@@ -85,8 +111,10 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
 
         <script src="static/js/vendor/bootstrap.min.js"></script>
-        <script src="static/js/vendor/underscore-min.js"></script>
-        <script src="static/js/vendor/backbone-min.js"></script>
+
+        <script>
+            ${failRegister}
+        </script>
 
         <script src="static/js/main.js"></script>
 

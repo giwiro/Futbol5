@@ -6,15 +6,15 @@
 
 package pe.edu.ulima.futbolapp.servlets;
 
-import com.google.code.morphia.emul.org.bson.types.ObjectId;
-import com.google.gson.Gson;
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import pe.edu.ulima.model.GestorSession;
 import pe.edu.ulima.model.GestorUsuario;
 import pe.edu.ulima.model.beans.Usuario;
 import pe.edu.ulima.model.dao.FactoryMongo;
@@ -30,23 +30,35 @@ public class LoginUser extends HttpServlet {
             throws ServletException, IOException {
         
         GestorUsuario.getInstance().setFactoryDAO(new FactoryMongo());
+        
         Usuario user = GestorUsuario.getInstance().loguin(
                 request.getParameter("nickname"), request.getParameter("password"));
         
-                final Gson gson = new Gson();
-                String formatJson = gson.toJson(user);
+        RequestDispatcher rd = null;
+        if(user != null){
+            HttpSession ses = request.getSession(true);
+            GestorSession.getInstance().putUser(ses, user);
+            rd = request.getRequestDispatcher("landing.jsp");
+        }else{
+            request.setAttribute("fail","display: block");
+            rd = request.getRequestDispatcher("index.jsp");
+        }
+        
+        rd.forward(request, response);
+        
+        /*final Gson gson = new Gson();
+        String formatJson = gson.toJson(user);
                 
         
-            response.setContentType("application/json");
-            try (PrintWriter out = response.getWriter()) {
-                /* TODO output your page here. You may use following sample code. */
-                
-                if(user != null){
+        response.setContentType("application/json");
+        try (PrintWriter out = response.getWriter()) {
+
+            if(user != null){
                 out.println(formatJson);
-                }else{
+            }else{
                 out.println("<h1>Tu usuario o password sin incorrectos </h1>");
-                }
-        }
+            }
+        }*/
      
     }
 

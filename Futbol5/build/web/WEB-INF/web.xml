@@ -4,9 +4,17 @@
         <servlet-name>RegistroUser</servlet-name>
         <servlet-class>pe.edu.ulima.futbolapp.servlets.RegistroUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>pe.edu.ulima.futbolapp.servlets.Logout</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistroUser</servlet-name>
         <url-pattern>/RegistroUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -14,7 +22,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
         <!--<welcome-file>index.htm</welcome-file>
         <welcome-file>index.jsp</welcome-file>-->
     </welcome-file-list>

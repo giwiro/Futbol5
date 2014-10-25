@@ -17,6 +17,7 @@ public class Usuario{
     private String lastname;
     private String nickname;
     private String password;
+    private int karma;
 
     public String getId() {
         return _id;
@@ -24,6 +25,14 @@ public class Usuario{
 
     public void setId(String _id) {
         this._id = _id;
+    }
+
+    public int getKarma() {
+        return karma;
+    }
+
+    public void setKarma(int karma) {
+        this.karma = karma;
     }
 
     public String getName() {

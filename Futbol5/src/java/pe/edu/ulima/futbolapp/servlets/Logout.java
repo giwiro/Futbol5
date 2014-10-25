@@ -1,34 +1,28 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package pe.edu.ulima.futbolapp.servlets;
 
-import com.google.gson.Gson;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pe.edu.ulima.model.GestorUsuario;
-import pe.edu.ulima.model.beans.Usuario;
-import pe.edu.ulima.model.dao.FactoryMongo;
+import javax.servlet.http.HttpSession;
+import pe.edu.ulima.model.GestorSession;
 
 /**
  *
- * @author Davalos
+ * @author gdavalos
  */
-@WebServlet(name = "RegistroUser", urlPatterns = {"/RegistroUser"})
-public class RegistroUser extends HttpServlet {
+public class Logout extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Processes requests for both HTTP
+     * <code>GET</code> and
+     * <code>POST</code> methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -37,43 +31,19 @@ public class RegistroUser extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        GestorUsuario.getInstance().setFactoryDAO(new FactoryMongo());
-        Usuario user = GestorUsuario.getInstance().register(
-                request.getParameter("dni"), 
-                request.getParameter("nombre"),
-                request.getParameter("apellido"),
-                request.getParameter("nickname"),
-                request.getParameter("password")
-        );
         
-        RequestDispatcher rd = null;
+        HttpSession ses = request.getSession(true);
         
-        if(user != null){
-            //out.println(formatJson);
-            rd = request.getRequestDispatcher("landing.jsp");
-        }else{
-            request.setAttribute("failRegister","$('.modal').modal('show')");
-            rd = request.getRequestDispatcher("index.jsp");
-        }
+        GestorSession.getInstance().destroy(ses);
         
+        RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
         rd.forward(request, response);
-        
-        /*final Gson gson = new Gson();
-        String formatJson = gson.toJson(user);
-        
-        response.setContentType("application/json");
-        try (PrintWriter out = response.getWriter()) {
-            if(user != null){
-                out.println(formatJson);
-            }else{
-                out.println("<h1>Formato incorrecto</h1>");
-            }
-        }*/
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP
+     * <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -87,7 +57,8 @@ public class RegistroUser extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Handles the HTTP
+     * <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -109,5 +80,4 @@ public class RegistroUser extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

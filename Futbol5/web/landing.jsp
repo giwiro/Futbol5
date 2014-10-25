@@ -16,6 +16,8 @@
         <link rel="stylesheet" href="static/css/fullcalendar.min.css">
         <link rel="stylesheet" href="static/css/fullcalendar.print.css" media="print">
 
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
 
         <script src="static/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
@@ -35,14 +37,14 @@
           </div>
           <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">Crear Sala</a></li>
+              <li><a href="" data-toggle="modal" data-target="#fecha_hora">Crear Sala</a></li>
               <li class="pad">
                 <label for="Hola">Hola </label>
-                <a href="#">giwiro</a>
-                <span id="tooltip-karma" class="badge pull-right hidden-xs" style="margin-top:23px; cursor: default" data-toggle="tooltip" data-placement="bottom" title="Puntos de Karma">42</span>
-                <span class="badge pull-right visible-xs" style="margin-top:9px">42</span>
+                <a href="#"><%= session.getAttribute( "Nombre" ) %></a>
+                <span id="tooltip-karma" class="badge pull-right hidden-xs" style="margin-top:23px; cursor: default" data-toggle="tooltip" data-placement="bottom" title="Puntos de Karma"><%= session.getAttribute( "Karma" ) %></span>
+                <span class="badge pull-right visible-xs" style="margin-top:9px"><%= session.getAttribute( "Karma" ) %></span>
               </li>
-              <li><a href="#">Logout</a></li>
+              <li><a href="Logout">Logout</a></li>
             </ul>
           </div>
         </div>
@@ -119,12 +121,56 @@
 
         </div>
 
+        <div id="fecha_hora" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+                <h4 class="modal-title">Llena los datos</h4>
+              </div>
+              <div class="modal-body">
+
+                <form action="RegistroUser" method="post">
+                    <div class="modal-body">
+                        <input class="form-control" type="text" name="nombrePartido" placeholder="Nombre del Partido" required="required">
+                        <br>
+                        <select class="form-control" name="hora" required="required">
+                          <option value="7">7am - 8am</option>
+                          <option value="8">8am - 9am</option>
+                          <option value="9">9am - 10am</option>
+                          <option value="10">10am - 11am</option>
+                          <option value="11">11am - 12am</option>
+                          <option value="12">12am - 1pm</option>
+                          <option value="13">1pm - 2pm</option>
+                          <option value="14">2pm - 4pm</option>
+                          <option value="15">3pm - 5pm</option>
+                          <option value="16">4pm - 6pm</option>
+                          <option value="17">5pm - 6pm</option>
+                          <option value="18">6pm - 7pm</option>
+                          <option value="19">7pm - 8pm</option>
+                          <option value="20">8pm - 9pm</option>
+                          <option value="21">9pm - 10pm</option>
+                        </select>
+                        <br>
+                        <input class="form-control" type="text" id="datepicker" placeholder="Ingresar Fecha" required="required">
+                </form>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Crear Sala</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
         <script src="static/js/vendor/bootstrap.min.js"></script>
-        <script src="static/js/vendor/underscore-min.js"></script>
-        <script src="static/js/vendor/backbone-min.js"></script>
 
         <script src="static/js/vendor/moment.js"></script>
         <script src="static/js/vendor/fullcalendar.min.js"></script>
@@ -202,7 +248,7 @@
                   }
               },
               events: [
-                {
+                /*{
                   title: 'All Day Event',
                   start: '2014-09-01'
                 },
@@ -255,11 +301,36 @@
                   title: 'Click for Google',
                   url: 'http://google.com/',
                   start: '2014-09-28'
-                }
+                }*/
               ]
             });
             
           });
+        </script>
+
+        <script>
+          $.datepicker.regional['es'] = {
+           closeText: 'Cerrar',
+           prevText: '<Ant',
+           nextText: 'Sig>',
+           currentText: 'Hoy',
+           monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+           monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+           dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+           dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+           dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+           weekHeader: 'Sm',
+           dateFormat: 'dd/mm/yy',
+           firstDay: 1,
+           isRTL: false,
+           showMonthAfterYear: false,
+           yearSuffix: ''
+         };
+         $.datepicker.setDefaults($.datepicker.regional['es']);
+
+         $(function() {
+          $( "#datepicker" ).datepicker({ minDate: 1 });
+        });
         </script>
 
     </body>
