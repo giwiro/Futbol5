@@ -20,8 +20,5 @@ public class CanchaMongoDAO extends BasicDAO<Cancha, ObjectId>{
                  .field("calendar.fecha").equal(fecha)
                  .field("calendar.hora").notEqual(hora)
                  .asList();
-     }
-     
-     
-    
+     }  
 }

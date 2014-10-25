@@ -6,6 +6,7 @@
 
 package pe.edu.ulima.futbolapp.servlets;
 
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
@@ -49,6 +50,13 @@ public class CanchasDisponibles extends HttpServlet {
         List<Cancha> disponibles = GestorCancha.getInstance().getDispCanchas(
                 date, Integer.parseInt(request.getParameter("hora")));
         
+        final Gson gson = new Gson();
+        String formatJson = gson.toJson(disponibles);
+        
+        response.setContentType("application/json");
+        try (PrintWriter out = response.getWriter()) {
+         out.println(formatJson);
+        }
         
     }
 

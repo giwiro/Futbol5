@@ -23,8 +23,7 @@ public class PartidoMongoDAO extends BasicDAO<Usuario, ObjectId>{
     public PartidoMongoDAO(Mongo mongo, Morphia morphia, String dbName) {
         super(mongo, morphia, dbName);
     }
-    
-    
+       
     public List<Partido> getPartidos() {
         return ds.find(Partido.class).asList();
     }
