@@ -18,6 +18,10 @@ import pe.edu.ulima.model.beans.Usuario;
 public interface FactoryDAO {
     public Usuario getUser(String name); 
     public Usuario registerUser(String dni, String nombre, String apellido, String nick, String password); 
+    
     public List<Partido> getPartidos();
-    public Partido insertPartido(String nombre, Date hora);
+    public Partido insertPartido(String nombre, int hora, Date fecha);
+    public List<Partido> disponiblesDia(String nombre, int hora, Date fecha);
+   
+
 } 
