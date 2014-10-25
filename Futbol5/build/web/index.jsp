@@ -76,10 +76,10 @@
                     <form action="RegistroUser" method="post">
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-md-4" style="border-right: solid 1px grey">
+                                <div class="col-md-4">
                                     imagten paja
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-8" style="border-left: solid 1px grey">
                                     <input class="form-control" type="text" name="dni" placeholder="dni" />
                                     <br>
                                     <input class="form-control" type="text" name="nombre" placeholder="nombre" />

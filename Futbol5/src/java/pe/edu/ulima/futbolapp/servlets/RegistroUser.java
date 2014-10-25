@@ -6,15 +6,15 @@
 
 package pe.edu.ulima.futbolapp.servlets;
 
-import com.google.gson.Gson;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import pe.edu.ulima.model.GestorSession;
 import pe.edu.ulima.model.GestorUsuario;
 import pe.edu.ulima.model.beans.Usuario;
 import pe.edu.ulima.model.dao.FactoryMongo;
@@ -49,7 +49,8 @@ public class RegistroUser extends HttpServlet {
         RequestDispatcher rd = null;
         
         if(user != null){
-            //out.println(formatJson);
+            HttpSession ses = request.getSession(true);
+            GestorSession.getInstance().putUser(ses, user);
             rd = request.getRequestDispatcher("landing.jsp");
         }else{
             request.setAttribute("failRegister","$('.modal').modal('show')");
