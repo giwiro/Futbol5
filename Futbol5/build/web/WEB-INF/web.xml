@@ -12,6 +12,10 @@
         <servlet-name>RegistroPartido</servlet-name>
         <servlet-class>pe.edu.ulima.futbolapp.servlets.RegistroPartido</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MisPartidos</servlet-name>
+        <servlet-class>pe.edu.ulima.futbolapp.servlets.MisPartidos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistroUser</servlet-name>
         <url-pattern>/RegistroUser</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>RegistroPartido</servlet-name>
         <url-pattern>/RegistroPartido</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MisPartidos</servlet-name>
+        <url-pattern>/MisPartidos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

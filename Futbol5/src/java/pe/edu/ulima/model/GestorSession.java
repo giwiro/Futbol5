@@ -27,6 +27,7 @@ public class GestorSession {
     public void putUser(HttpSession ses, Usuario us){
         ses.setAttribute("Usuario", us);
         ses.setAttribute("Nombre", us.getName());
+        ses.setAttribute("Nickname", us.getNickname());
         ses.setAttribute("Karma", us.getKarma());
     }
     
@@ -38,6 +39,7 @@ public class GestorSession {
     public void destroy(HttpSession ses){
         ses.setAttribute("Usuario", null);
         ses.setAttribute("Nombre", null);
+        ses.setAttribute("Nickname", null);
         ses.setAttribute("Karma", null);
         ses.invalidate();
     }

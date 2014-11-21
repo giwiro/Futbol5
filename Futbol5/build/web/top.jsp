@@ -9,9 +9,9 @@
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="" data-toggle="modal" data-target="#unirse">Unirme a una sala</a></li>
-      <li><a href="mis_partidos.jsp">Mis Partidos</a></li>
-      <li><a href="" data-toggle="modal" data-target="#fecha_hora">Crear Sala</a></li>
+      <li><a href="" onclick="$('#unirse').modal('show'); return false">Unirme a una sala</a></li>
+      <li><a href="MisPartidos">Mis Partidos</a></li>
+      <li><a href="" onclick="$('#fecha_hora').modal('show'); return false">Crear Sala</a></li>
       <li class="pad">
         <label for="Hola">Hola </label>
         <a href="#"><%= session.getAttribute( "Nombre" ) %></a>

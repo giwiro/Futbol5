@@ -129,10 +129,6 @@ public class FactoryMongo implements FactoryDAO {
        initiate();
        return partidoMongoDao.userPartidos(nickame);
     }
-    
-    @Override
-    public List<Partido> userPartidos(){
-        return null;
-    }
+
     
 }
