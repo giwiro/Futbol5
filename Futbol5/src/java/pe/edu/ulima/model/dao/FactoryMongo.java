@@ -81,12 +81,13 @@ public class FactoryMongo implements FactoryDAO {
     }
 
     @Override
-    public Partido insertPartido(String nombre, int hora, Date fecha) {
+    public Partido insertPartido(String nombre, int hora, Date fecha, String nickname) {
         initiate();
         Partido partidoInsert = new Partido();
         partidoInsert.setName(nombre);
         partidoInsert.setHora(hora);
         partidoInsert.setEstado("espera");
+        partidoInsert.setNickname(nickname);
     
         Partido partido = partidoMongoDao.insertPartido(partidoInsert);
         
@@ -128,6 +129,11 @@ public class FactoryMongo implements FactoryDAO {
     public List<Partido> userPartidos(String nickame) {
        initiate();
        return partidoMongoDao.userPartidos(nickame);
+    }
+
+    @Override
+    public Partido getPartido(String idPartido) {
+        return partidoMongoDao.getPartido(idPartido);
     }
     
     @Override

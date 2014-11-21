@@ -19,8 +19,16 @@ public class Partido{
     private int hora; //solo acceder cuando estado es diferente de 'en espera'
     private String estado;
     @Reference Cancha cancha;
-    private Usuario creator;
+    private String nickname;
     @Reference List<Usuario> players;
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
 
     public String getId() {
         return _id;
@@ -70,13 +78,7 @@ public class Partido{
         this.cancha = cancha;
     }
 
-    public Usuario getCreator() {
-        return creator;
-    }
 
-    public void setCreator(Usuario creator) {
-        this.creator = creator;
-    }
 
     public List<Usuario> getPlayers() {
         return players;

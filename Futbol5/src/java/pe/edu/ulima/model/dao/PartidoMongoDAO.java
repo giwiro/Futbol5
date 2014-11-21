@@ -47,4 +47,8 @@ public class PartidoMongoDAO extends BasicDAO<Usuario, ObjectId>{
                  .asList();
    }
     
+   public Partido getPartido(String idPartido){
+       return ds.find(Partido.class).field("_id").equal(idPartido).get();
+   }
+    
 }
