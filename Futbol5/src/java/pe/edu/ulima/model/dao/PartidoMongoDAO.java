@@ -43,7 +43,7 @@ public class PartidoMongoDAO extends BasicDAO<Usuario, ObjectId>{
     
     public List<Partido> userPartidos(String nickname){     
         return ds.find(Partido.class)
-                 .field("creador").equal(nickname)
+                 .field("nickname").equal(nickname)
                  .asList();
    }
     

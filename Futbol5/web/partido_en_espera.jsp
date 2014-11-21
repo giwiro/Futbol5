@@ -61,7 +61,7 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <jsp:include page="bottom.jsp" />
+        <jsp:include page="top.jsp" />
   
         <div class="row">
             <div class="wrap-input col-md-12">

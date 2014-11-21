@@ -130,18 +130,9 @@ public class FactoryMongo implements FactoryDAO {
        initiate();
        return partidoMongoDao.userPartidos(nickame);
     }
-
-<<<<<<< HEAD
-=======
     @Override
     public Partido getPartido(String idPartido) {
         return partidoMongoDao.getPartido(idPartido);
     }
-    
-    @Override
-    public List<Partido> userPartidos(){
-        return null;
-    }
->>>>>>> 050ee7b4c0b6e7bd22b399635c138edeae885bf0
     
 }
