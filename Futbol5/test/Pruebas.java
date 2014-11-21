@@ -49,6 +49,7 @@ public class Pruebas {
 
         DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
         Date fecha = null;
+        String nickname = "giwiro";
         try {
             fecha = formatter.parse(f);
         } catch (ParseException ex) {
@@ -62,7 +63,8 @@ public class Pruebas {
         Partido partido = GestorPartido.getInstance().register(
                 nombre,
                 hora,
-                fecha
+                fecha,
+                nickname
         );
         
         assertTrue("FUNCIONO BIEN :D", partido != null);

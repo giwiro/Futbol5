@@ -88,7 +88,7 @@ public class FactoryMongo implements FactoryDAO {
         partidoInsert.setHora(hora);
         partidoInsert.setEstado("espera");
         partidoInsert.setNickname(nickname);
-    
+       
         Partido partido = partidoMongoDao.insertPartido(partidoInsert);
         
         return partido;
