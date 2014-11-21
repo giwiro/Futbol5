@@ -8,6 +8,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import pe.edu.ulima.model.beans.Cancha;
@@ -104,6 +105,23 @@ public class FactoryMongo implements FactoryDAO {
         initiate();
         List<Cancha> allcanchas = canchaMongoDao.getCancha();
         return allcanchas;
+    }
+
+    @Override
+    public void updateKarma(String nickname, int karma) {
+       initiate();
+       userDao.updateKarma(nickname, karma);
+    }
+
+    @Override
+    public void pushInPartido(String idNikcname, String idPartido) {
+       initiate();
+       partidoMongoDao.pushInPartido(idNikcname, idPartido);
+    }
+
+    @Override
+    public void getPartidosMes(String mes, String year) {
+       
     }
     
 }

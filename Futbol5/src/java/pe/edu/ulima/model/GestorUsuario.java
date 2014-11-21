@@ -61,6 +61,8 @@ public class GestorUsuario {
         return user;
     }
     
-    
-    
+    public void updateKarma(String nick, int karma){
+        mFactory.updateKarma(nick, karma);
+    }
+
 }

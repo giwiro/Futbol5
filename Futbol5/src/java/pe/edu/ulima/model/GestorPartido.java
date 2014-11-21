@@ -29,6 +29,10 @@ public class GestorPartido {
         return partido;
     }
     
+    public void pushInPartido(String idNickname, String idPartido){
+        mFactory.pushInPartido(idNickname, idPartido);
+    }
+    
     
     
 }

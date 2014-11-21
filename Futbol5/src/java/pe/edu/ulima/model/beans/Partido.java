@@ -1,4 +1,3 @@
-
 package pe.edu.ulima.model.beans;
 
 import com.google.code.morphia.annotations.Entity;
@@ -21,7 +20,7 @@ public class Partido{
     private String estado;
     @Reference Cancha cancha;
     private Usuario creator;
-    private List<Usuario> players;
+    @Reference List<Usuario> players;
 
     public String getId() {
         return _id;
@@ -86,11 +85,6 @@ public class Partido{
     public void setPlayers(List<Usuario> players) {
         this.players = players;
     }
-    
-    
-
-
-
     
     
     

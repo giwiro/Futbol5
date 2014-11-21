@@ -33,4 +33,13 @@ public class PartidoMongoDAO extends BasicDAO<Usuario, ObjectId>{
         return partidoInsert;
     }
     
+    public void pushInPartido(String idNick, String idPartido){
+        
+        Partido partido = ds.find(Partido.class).field("_id").equal(idPartido).get();
+        Usuario user = ds.find(Usuario.class).field("_id").equal(idNick).get();
+        partido.getPlayers().add(user);
+        ds.save();
+    
+    }
+    
 }

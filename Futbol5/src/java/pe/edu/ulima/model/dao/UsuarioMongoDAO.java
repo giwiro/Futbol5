@@ -8,8 +8,8 @@ package pe.edu.ulima.model.dao;
 
 import com.google.code.morphia.Morphia;
 import com.google.code.morphia.dao.BasicDAO;
-import org.bson.types.ObjectId;
 import com.google.code.morphia.query.Query;
+import com.google.code.morphia.query.UpdateOperations;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -22,6 +22,7 @@ import com.mongodb.ServerAddress;
 import java.net.UnknownHostException;
 import java.util.Iterator;
 import java.util.regex.Pattern;
+import org.bson.types.ObjectId;
 import pe.edu.ulima.model.beans.Usuario;
 
 /**
@@ -47,6 +48,17 @@ public class UsuarioMongoDAO extends BasicDAO<Usuario, ObjectId>{
     public Usuario insertUsuario(Usuario userInsert) {
         ds.save(userInsert);
         return userInsert;
+    }
+    
+    public void updateKarma(String nick, int karma){
+        
+        Usuario user = ds.find(Usuario.class).field("nickname").equal(nick).get();
+        int newkarma = user.getKarma() + karma;
+        
+        Query<Usuario> query = ds.createQuery(Usuario.class).field("nickname").equal(nick);
+        UpdateOperations<Usuario> ops = ds.createUpdateOperations(Usuario.class).set("karma", newkarma);
+        ds.update(query, ops);
+        
     }
     
 }
