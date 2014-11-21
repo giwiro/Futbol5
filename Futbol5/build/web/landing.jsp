@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
+        <title>Landing</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -26,28 +26,7 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <div class="navbar navbar-default">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"><img class="logo blanco" src="static/img/logoBlanco.png" alt=""></a>
-          </div>
-          <div class="navbar-collapse collapse navbar-responsive-collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="" data-toggle="modal" data-target="#fecha_hora">Crear Sala</a></li>
-              <li class="pad">
-                <label for="Hola">Hola </label>
-                <a href="#"><%= session.getAttribute( "Nombre" ) %></a>
-                <span id="tooltip-karma" class="badge pull-right hidden-xs" style="margin-top:23px; cursor: default" data-toggle="tooltip" data-placement="bottom" title="Puntos de Karma"><%= session.getAttribute( "Karma" ) %></span>
-                <span class="badge pull-right visible-xs" style="margin-top:9px"><%= session.getAttribute( "Karma" ) %></span>
-              </li>
-              <li><a href="Logout">Logout</a></li>
-            </ul>
-          </div>
-        </div>
+        <jsp:include page="top.jsp" />
 
         <div class="noticia-mes"></div>
 
@@ -87,39 +66,30 @@
 
         <br>
 
-        <div id="footer" class="footer">
-          <img src="static/img/tw.png" class="SNicon img-thumbnail img-circle pull-right" style="margin-right: 20px;">
-          <img src="static/img/fb.png" class="SNicon img-thumbnail img-circle pull-right">
-          <div class="row" style="padding: 30px 0">
-            <div class="col-md-3" style="text-align: center">
-              <img src="static/img/logo.png" class="logo" width="220">
-            </div>
-            <div class="col-md-2">
-              <h4><b>Sobre Nosotros</b></h4>
-              <p>Somos un grupo de desarrolladores que aman las nuevas tecnologías</p>
-              <!-- <dt>
-                <dd>Holi</dd>
-                <dd>Holi2</dd>
-              </dt> -->
-            </div>
-            <div class="col-md-2">
-              <h4><b>Contacto</b></h4>
-              <div class="icon-wrap">
-                <div class="icon">
-                  <span class="glyphicon glyphicon-earphone"></span>
-                </div>
-                <label style="font-weight: normal !important"> 99995867</label>
-              </div>
-              <div class="icon-wrap">
-                <div class="icon">
-                  <span class="glyphicon glyphicon-envelope"></span>
-                </div>
-                <label style="font-weight: normal !important"> contacto@alengi.com</label>
-              </div>
-            </div>
-          </div>
+        <jsp:include page="bottom.jsp" />
 
-        </div>
+
+        <div id="unirse" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+                <h4 class="modal-title">Llena el código de reserva</h4>
+              </div>
+              <form action="/UnirsePartido" method="post">
+                <div class="modal-body">
+                    <div class="modal-body">
+                        <input class="form-control" type="text" name="nombrePartido" placeholder="Nombre del Partido" 
+                  </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                  <input type="submit" class="btn btn-primary" value="Ir al partido">
+                </div>
+              </form>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
 
         <div id="fecha_hora" class="modal fade">
           <div class="modal-dialog">
