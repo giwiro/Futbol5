@@ -20,14 +20,13 @@ public interface FactoryDAO {
     public Usuario getUser(String name); 
     public Usuario registerUser(String dni, String nombre, String apellido, String nick, String password); 
     public void updateKarma(String nickname, int karma);
-    public List<Partido> userPartidos();
-    
+    public List<Partido> userPartidos(String nickame);
     
     public List<Partido> getPartidos();
     public Partido insertPartido(String nombre, int hora, Date fecha);
     public List<Cancha> nodisponiblesCancha(int hora, Date fecha);
     public List<Cancha> getCanchas();
-    public void pushInPartido(String userID, String partidoID);//new
+    public void pushInPartido(String userID, String partidoID);
     public void getPartidosMes(String mes, String year);//new
 
 } 

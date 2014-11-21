@@ -3,6 +3,7 @@
 package pe.edu.ulima.model;
 
 import java.util.Date;
+import java.util.List;
 import pe.edu.ulima.model.beans.Partido;
 import pe.edu.ulima.model.dao.FactoryDAO;
 
@@ -33,6 +34,8 @@ public class GestorPartido {
         mFactory.pushInPartido(idNickname, idPartido);
     }
     
-    
+    public List<Partido> userPartidos(String nickname){
+        return mFactory.userPartidos(nickname);
+    } 
     
 }

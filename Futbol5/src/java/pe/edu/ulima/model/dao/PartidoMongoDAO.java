@@ -38,8 +38,13 @@ public class PartidoMongoDAO extends BasicDAO<Usuario, ObjectId>{
         Partido partido = ds.find(Partido.class).field("_id").equal(idPartido).get();
         Usuario user = ds.find(Usuario.class).field("_id").equal(idNick).get();
         partido.getPlayers().add(user);
-        ds.save();
-    
+        ds.save();   
     }
+    
+    public List<Partido> userPartidos(String nickname){     
+        return ds.find(Partido.class)
+                 .field("creador").equal(nickname)
+                 .asList();
+   }
     
 }

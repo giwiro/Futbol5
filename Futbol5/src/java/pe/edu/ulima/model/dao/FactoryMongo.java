@@ -123,5 +123,11 @@ public class FactoryMongo implements FactoryDAO {
     public void getPartidosMes(String mes, String year) {
        
     }
+
+    @Override
+    public List<Partido> userPartidos(String nickame) {
+       initiate();
+       return partidoMongoDao.userPartidos(nickame);
+    }
     
 }

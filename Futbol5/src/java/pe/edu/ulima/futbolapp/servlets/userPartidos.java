@@ -6,27 +6,41 @@
 
 package pe.edu.ulima.futbolapp.servlets;
 
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pe.edu.ulima.model.GestorUsuario;
+import pe.edu.ulima.model.GestorCancha;
+import pe.edu.ulima.model.GestorPartido;
+import pe.edu.ulima.model.beans.Cancha;
+import pe.edu.ulima.model.beans.Partido;
 import pe.edu.ulima.model.dao.FactoryMongo;
 
 /**
  *
  * @author iEnzo
  */
-@WebServlet(name = "updateKarma", urlPatterns = {"/updateKarma"})
-public class updateKarma extends HttpServlet {
+@WebServlet(name = "userPartidos", urlPatterns = {"/userPartidos"})
+public class userPartidos extends HttpServlet {
+
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-        GestorUsuario.getInstance().setFactoryDAO(new FactoryMongo());
-        GestorUsuario.getInstance().updateKarma(request.getParameter("nickname"), Integer.parseInt(request.getParameter("karma")));
+            throws ServletException, IOException {
+          GestorPartido.getInstance().setFactoryDAO(new FactoryMongo());
+        List<Partido> disponibles = 
+                GestorPartido.getInstance().userPartidos(request.getParameter("nickname"));
+         
+        final Gson gson = new Gson();
+        String formatJson = gson.toJson(disponibles);
+        response.setContentType("application/json");
+        try (PrintWriter out = response.getWriter()) {
+            out.println(formatJson);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
