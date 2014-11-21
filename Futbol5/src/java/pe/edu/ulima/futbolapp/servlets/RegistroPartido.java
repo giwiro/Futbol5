@@ -21,6 +21,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import pe.edu.ulima.model.GestorCancha;
 import pe.edu.ulima.model.GestorPartido;
 import pe.edu.ulima.model.beans.Cancha;
@@ -56,6 +57,7 @@ public class RegistroPartido extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession ses = request.getSession();
         
         String f = request.getParameter("fecha");
         
@@ -70,12 +72,14 @@ public class RegistroPartido extends HttpServlet {
 
         String nombre = request.getParameter("nombrePartido");
         int hora = Integer.parseInt(request.getParameter("hora"));
+        String nickname = (String)ses.getAttribute("Nickname");
         
         GestorPartido.getInstance().setFactoryDAO(new FactoryMongo());
         Partido partido = GestorPartido.getInstance().register(
                 nombre,
                 hora,
-                fecha
+                fecha,
+                nickname
         );
         
         RequestDispatcher rd = null;

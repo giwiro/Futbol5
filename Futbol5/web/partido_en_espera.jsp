@@ -61,27 +61,7 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <div class="navbar navbar-default">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"><img class="logo blanco" src="static/img/logoBlanco.png" alt=""></a>
-          </div>
-          <div class="navbar-collapse collapse navbar-responsive-collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="" data-toggle="modal">Crear Sala</a></li>
-              <li class="pad">
-                <label for="Hola">Hola </label>
-                <span id="tooltip-karma" class="badge pull-right hidden-xs" style="margin-top:23px; cursor: default" data-toggle="tooltip" data-placement="bottom" title="Puntos de Karma"><%= session.getAttribute( "Karma" ) %></span>
-                <span class="badge pull-right visible-xs" style="margin-top:9px"><%= session.getAttribute( "Karma" ) %></span>
-              </li>
-              <li><a href="Logout">Logout</a></li>
-            </ul>
-          </div>
-        </div>
+        <jsp:include page="bottom.jsp" />
   
         <div class="row">
             <div class="wrap-input col-md-12">

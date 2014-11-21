@@ -23,10 +23,11 @@ public interface FactoryDAO {
     public List<Partido> userPartidos(String nickame);
     
     public List<Partido> getPartidos();
-    public Partido insertPartido(String nombre, int hora, Date fecha);
+    public Partido insertPartido(String nombre, int hora, Date fecha, String nickname);
     public List<Cancha> nodisponiblesCancha(int hora, Date fecha);
     public List<Cancha> getCanchas();
-    public void pushInPartido(String userID, String partidoID);
+    public void pushInPartido(String userID, String partidoID);//new
     public void getPartidosMes(String mes, String year);//new
+    public Partido getPartido(String idPartido);
 
 } 

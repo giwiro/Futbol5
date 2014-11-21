@@ -25,8 +25,8 @@ public class GestorPartido {
         mFactory = factoryDAO;
     }
     
-    public Partido register(String nombre, int hora, Date fecha){
-        Partido partido = mFactory.insertPartido(nombre, hora, fecha);
+    public Partido register(String nombre, int hora, Date fecha, String nickname){
+        Partido partido = mFactory.insertPartido(nombre, hora, fecha, nickname);
         return partido;
     }
     
@@ -36,6 +36,10 @@ public class GestorPartido {
     
     public List<Partido> userPartidos(String nickname){
         return mFactory.userPartidos(nickname);
-    } 
+    }
+    
+    public Partido getPartido(String idPartido){
+        return mFactory.getPartido(idPartido);
+    }
     
 }
