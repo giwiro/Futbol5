@@ -88,7 +88,20 @@
               
         </div>
         <br>
-        <br>
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4" style="text-align: center">
+            Comparte este enlace con tus amigos para que puedan acceder a tu partido:
+            <div class="input-group">
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+              </span>
+              <input type="text" class="form-control" value="${idPartido}" disabled="disabled" style="cursor: pointer">
+            </div>
+          </div>
+        </div>
+        
+        <br><br><br>
         <div class="row">
           <div class="col-md-3 col-md-offset-1">
 
@@ -175,33 +188,6 @@
             <br>
             <hr>
             <br>
-
-            <h3>Sala de espera</h3>
-            <br>
-            <div class="row">
-              <div class="col-md-12">
-
-                <ul class="list-group">
-                  <li class="list-group-item">
-                    <label>Gi Wah</label>
-                  </li>
-                  <li class="list-group-item">
-                    <label></label>
-                  </li>
-                  <li class="list-group-item">
-                    <label></label>
-                  </li>
-                  <li class="list-group-item">
-                    <label></label>
-                  </li>
-                  <li class="list-group-item">
-                    <label></label>
-                  </li>
-                </ul>
-
-
-              </div>
-            </div>
 
           </div>
         </div>
@@ -300,9 +286,10 @@
           //console.log("fecha_talcual",'${fecha_talcual}');
           
 
-          var Brush = function(array){
+          var Brush = function(array, idUsuario){
             var $wrap = $("#lista_canchas"),
-                _arr = JSON.parse(array);
+                _arr = JSON.parse(array),
+                _idSelected = null;
 
             this.getArr = function(){
               return _arr;
@@ -312,20 +299,29 @@
               if(override){
                 $wrap.html("");
               }
-              //onsole.log("_arr",_arr);
+              var checked = "";
               for(l in list){
+                //console.log(_idSelected,list[l]._id);
+                if(_idSelected == list[l]._id){
+                  checked = "checked = 'checked'";
+                }
                 $wrap.append('\
-                  <li class="list-group-item">\
+                  <li class="list-group-item" id="'+ list[l]._id +'">\
                     <h4>'+list[l].name+'</h4>\
                     <label>'+list[l].direccion+'</label>\
-                    <input type="radio" name="cancha" value="'+list[l]._id+'">\
+                    <input class="radio" type="radio" name="cancha" value="'+list[l]._id+'" '+ checked +'>\
                   </li>\
                   ');
+                checked = "";
               }
               $('input:radio').screwDefaultButtons({
                 image: 'url("static/img/radio-button/radioSmall.jpg")',
                 width: 43,
                 height: 43
+              });
+              $("input[type='radio']").on("change", function (e) { 
+                  _idSelected = $(e.target).attr("value");
+                  console.log("selected", _idSelected);    
               });
               return this;
             }
@@ -334,8 +330,8 @@
           var brush = new Brush('${todasCanchas}');
           brush._render(brush.getArr(),true);
 
-
           function check(fecha, hora){
+            console.log("se checkea");
             $.ajax({
               url:'CanchasNoDisponibles',
               type:'POST',
@@ -345,7 +341,7 @@
               },
               success: function(data){
                 no_disp = data;
-                console.log("data no_disp",no_disp);
+                //console.log("data no_disp",no_disp);
                 var _arr = brush.getArr(),
                     disp = [];
                 
@@ -358,7 +354,7 @@
                       break;
                     }
                   }
-                  console.log("y: " + y);
+                  //console.log("y: " + y);
                   if( y!== null){
                     disp.push(_arr[y])
                   }
@@ -366,7 +362,7 @@
 
                 brush._render(disp, true);
 
-                console.log("disp",disp);
+                //console.log("disp",disp);
               },
               error: function(err){
                 console.error(err);
@@ -382,6 +378,10 @@
           });
 
           check('${fecha_talcual}', ${hora});
+
+          setInterval(function(){
+            check($("#datepicker").val(),$("#hora").val())
+          },10000);
 
           
         </script>

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -38,11 +40,17 @@
           <div class="col-md-10 col-md-offset-1">
 
             <ul class="list-group">
-              <li class="list-group-item">
-                <h3 style="color: black">Pichanga: los torreones <span class="label label-default">En espera</span></h3>
+              
+            <c:forEach items="${lista}" var="item">
+                <li class="list-group-item">
+                    <h3 style="color: black"><a href="getPartido/${item.id}"><c:out value="${item.name}" /></a><span class="label label-default" style="margin-left: 10px;">${item.estado}</span></h3>
+                    <strong style="display: inline-block; vertical-align: top">Hora: </strong><label for="">${item.hora}</label><br>  
+                </li>             
+            </c:forEach> 
+                <!--
                 <strong style="display: inline-block; vertical-align: top">Hora: </strong><label for="">10:40</label><br>
-                <strong style="display: inline-block; vertical-align: top">Cancha: </strong><label for="">Av. Universitaria</label><br>
-              </li>
+                <strong style="display: inline-block; vertical-align: top">Cancha: </strong><label for="">Av. Universitaria</label>-->
+                
             </ul>
 
           </div>

@@ -6,6 +6,7 @@ package pe.edu.ulima.futbolapp.servlets;
 
 import java.io.IOException;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -40,7 +41,12 @@ public class MisPartidos extends HttpServlet {
         
         List<Partido> partidos = GestorPartido.getInstance().userPartidos(nick);
         
+        request.setAttribute("lista",partidos);
+        
+        RequestDispatcher rd = request.getRequestDispatcher("mis_partidos.jsp");
         System.out.println("partidos: " + partidos.size());
+        
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

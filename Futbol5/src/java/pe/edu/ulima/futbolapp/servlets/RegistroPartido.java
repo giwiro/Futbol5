@@ -105,6 +105,9 @@ public class RegistroPartido extends HttpServlet {
             String formatJson = gson.toJson(disponibles);
             
             request.setAttribute("todasCanchas", formatJson);
+            request.setAttribute("idPartido", partido.getId());
+            request.setAttribute("nicknamePartido", partido.getNickname());
+            
 
             /*response.setContentType("application/json");
             try (PrintWriter out = response.getWriter()) {
